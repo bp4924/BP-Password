@@ -1,5 +1,5 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+// global variables
+const generateBtn = document.querySelector("#generate");
 const passwordText = document.querySelector("#password");
 
 const charLength = document.getElementById("length");
@@ -20,18 +20,19 @@ let rand;
 let password;
 let strMessage;
 
+// Add event listener to 'Generate Password' button
+generateBtn.addEventListener("click", writePassword);
+
 // Write password to the #password input
 function writePassword() {
   if (testLength(charLength.value) && testCriteria()) {
-    password = generatePassword();
+    password = generatePassword(); // returns charString
   } else {
+    // error message if tests fail
     password = strMessage;
   }
   passwordText.value = password;
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 // generate selector core value
 function random(range, initValue) {
@@ -68,44 +69,39 @@ function charSymbol() {
 function generatePassword() {
   reset();
 
+  // select a character to add
   do {
     let charOption = Math.floor(Math.random() * 4) + 1;
-    //    console.log("charOption = " + charOption);
 
     switch (charOption) {
       case 1:
         if (includeUpper.checked) {
           charArray.push(charUpper());
-          //          console.log(rand);
         }
         break;
       case 2:
         if (includeLower.checked) {
           charArray.push(charLower());
-          //          console.log(rand);
         }
         break;
       case 3:
         if (includeNumber.checked) {
           charArray.push(charNumber());
-          //          console.log(rand);
         }
         break;
       case 4:
         if (includeSpecial.checked) {
           charArray.push(charSymbol());
-          //          console.log(rand);
         }
     }
-    //    console.log(charArray);
   } while (charArray.length < charLength.value);
 
+  // add the character to the character string
   charString = charArray.join("");
   charCount = Array.from(charString).length;
   console.log(charCount, charString);
   testInclusion();
   return charString;
-  //  password.innerHTML = charString;
 }
 
 // reset to try again
@@ -120,8 +116,8 @@ function reset() {
   hasSpecial = false;
 }
 
+// ensure selected length meets parameters
 function testLength(length) {
-  // test for parameters
   console.log(length);
   if (length < 8 || length > 128 || length % 1 !== 0) {
     strMessage =
@@ -132,6 +128,7 @@ function testLength(length) {
   }
 }
 
+// ensure at least one criteria is selected
 function testCriteria() {
   if (
     includeUpper.checked ||
@@ -162,6 +159,5 @@ function testInclusion() {
   } else {
     console.log("no match");
     writePassword();
-    //    return password;
   }
 }
