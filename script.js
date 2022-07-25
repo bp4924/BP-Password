@@ -18,7 +18,12 @@ let charCount;
 let charString;
 let rand;
 let password;
-let strMessage;
+
+// prompt
+let strMessage =
+  "Select password length and criteria (default length: 16, critera default: Included)";
+
+passwordText.value = strMessage;
 
 // Add event listener to 'Generate Password' button
 generateBtn.addEventListener("click", writePassword);
