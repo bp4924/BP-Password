@@ -6,7 +6,7 @@
 
 /* user variables */
 :root {
-  --light: #f9fbfd;
+  --light: #edf6ff;
   --dark: rgb(69, 32, 32);
   --contrast-light: rgb(249, 244, 244);
   --contrast-dark: rgb(177, 7, 7);
@@ -169,6 +169,8 @@ header {
   margin-bottom: 1rem;
   border: 2px dashed var(--contrast-dark);
   border-radius: var(--radius);
+  background-color: var(--light);
+  color: var(--dark);
 }
 
 footer {
