@@ -9,7 +9,7 @@ Prompt user to confirm or modify criteria
 
 Test that user input meets minimum requirements
 
-Test that result includes all options
+Test that result includes all selected options
 
 Dynamically update HTML & CSS using JavaScript
 
