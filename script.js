@@ -19,7 +19,7 @@ let charString;
 let rand;
 let password;
 
-// prompt 
+// prompt
 let strMessage =
   "Select password length and criteria (default length: 16, critera default: Included)";
 passwordText.value = strMessage;
@@ -46,7 +46,7 @@ function generatePassword() {
   do {
     let charOption = Math.floor(Math.random() * 4) + 1;
 
-    switch (charOption) { 
+    switch (charOption) {
       case 1:
         if (includeUpper.checked) {
           charArray.push(charUpper());
@@ -72,7 +72,6 @@ function generatePassword() {
   // add the character to the character string
   charString = charArray.join("");
   charCount = Array.from(charString).length;
-  console.log(charCount, charString);
   testInclusion();
   return charString;
 }
@@ -122,7 +121,6 @@ function reset() {
 
 // ensure selected length meets parameters
 function testLength(length) {
-  console.log(length);
   if (length < 8 || length > 128 || length % 1 !== 0) {
     strMessage =
       "Length must be a whole number not less than 8 and not more than 128";
@@ -148,20 +146,15 @@ function testCriteria() {
 }
 
 function testInclusion() {
-  console.log(includeUpper.checked);
-  console.log("hasUpper " + hasUpper);
-  console.log(charString);
-
   if (
     hasUpper === includeUpper.checked &&
     hasLower === includeLower.checked &&
     hasNumber === includeNumber.checked &&
     hasSpecial === includeSpecial.checked
   ) {
-    console.log("match");
     return charString;
-  } else { // retry
-    console.log("no match");
+  } else {
+    // retry
     writePassword();
   }
 }
