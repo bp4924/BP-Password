@@ -19,10 +19,9 @@ let charString;
 let rand;
 let password;
 
-// prompt
+// prompt 
 let strMessage =
   "Select password length and criteria (default length: 16, critera default: Included)";
-
 passwordText.value = strMessage;
 
 // Add event listener to 'Generate Password' button
@@ -37,6 +36,45 @@ function writePassword() {
     password = strMessage;
   }
   passwordText.value = password;
+}
+
+// password generator
+function generatePassword() {
+  reset();
+
+  // select a character to add
+  do {
+    let charOption = Math.floor(Math.random() * 4) + 1;
+
+    switch (charOption) { 
+      case 1:
+        if (includeUpper.checked) {
+          charArray.push(charUpper());
+        }
+        break;
+      case 2:
+        if (includeLower.checked) {
+          charArray.push(charLower());
+        }
+        break;
+      case 3:
+        if (includeNumber.checked) {
+          charArray.push(charNumber());
+        }
+        break;
+      case 4:
+        if (includeSpecial.checked) {
+          charArray.push(charSymbol());
+        }
+    }
+  } while (charArray.length < charLength.value);
+
+  // add the character to the character string
+  charString = charArray.join("");
+  charCount = Array.from(charString).length;
+  console.log(charCount, charString);
+  testInclusion();
+  return charString;
 }
 
 // generate selector core value
@@ -68,45 +106,6 @@ function charSymbol() {
   random(15, 32);
   hasSpecial = true;
   return String.fromCharCode(rand);
-}
-
-// password generator
-function generatePassword() {
-  reset();
-
-  // select a character to add
-  do {
-    let charOption = Math.floor(Math.random() * 4) + 1;
-
-    switch (charOption) {
-      case 1:
-        if (includeUpper.checked) {
-          charArray.push(charUpper());
-        }
-        break;
-      case 2:
-        if (includeLower.checked) {
-          charArray.push(charLower());
-        }
-        break;
-      case 3:
-        if (includeNumber.checked) {
-          charArray.push(charNumber());
-        }
-        break;
-      case 4:
-        if (includeSpecial.checked) {
-          charArray.push(charSymbol());
-        }
-    }
-  } while (charArray.length < charLength.value);
-
-  // add the character to the character string
-  charString = charArray.join("");
-  charCount = Array.from(charString).length;
-  console.log(charCount, charString);
-  testInclusion();
-  return charString;
 }
 
 // reset to try again
@@ -161,7 +160,7 @@ function testInclusion() {
   ) {
     console.log("match");
     return charString;
-  } else {
+  } else { // retry
     console.log("no match");
     writePassword();
   }
