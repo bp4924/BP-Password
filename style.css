@@ -6,10 +6,10 @@
 
 /* user variables */
 :root {
-  --light: #c8d8e8;
+  --light: #f9fbfd;
   --dark: rgb(69, 32, 32);
-  --contrast-light: rgb(76, 61, 61);
-  --contrast-dark: rgb(183, 93, 93);
+  --contrast-light: rgb(249, 244, 244);
+  --contrast-dark: rgb(177, 7, 7);
   --radius: 0.7rem;
 }
 
@@ -50,8 +50,8 @@ header {
   max-width: 80rem;
   padding: 0.5rem;
   border-radius: var(--radius);
-  background-color: var(--contrast-dark);
-  color: var(--contrast-light);
+  /*  background-color: var(--contrast-dark);*/
+  color: var(--dark);
   font-size: 2rem;
 }
 
@@ -61,11 +61,11 @@ header {
   justify-content: center;
   text-align: center;
   flex-grow: 2;
-  background-color: var(--dark);
+  background-color: var(--contrast-light);
   border-radius: var(--radius);
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: var(--light);
+  color: var(--dark);
   font-size: 1.8rem;
   margin: 0.5rem auto;
   max-width: 80rem;
@@ -143,13 +143,12 @@ header {
 .btn {
   border: none;
   background-color: var(--contrast-dark);
-  border-radius: var(--radius);
+  border-radius: 3rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
   color: var(--light);
-  display: inline-block;
-  font-size: 2.2rem;
-  line-height: 2.2rem;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
   margin: 1rem 0 0 0;
   padding: 1.4rem 3.4rem;
   text-align: center;
@@ -161,8 +160,6 @@ header {
   -moz-appearance: none;
   appearance: none;
   border: none;
-  display: flex;
-  flex-direction: row;
   text-align: center;
   width: 100%;
   min-height: 6rem;
@@ -175,13 +172,14 @@ header {
 }
 
 footer {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: bold;
+  margin-bottom: 0.6rem;
 }
 
 @media (max-width: 690px) {
   .btn {
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin: 16px 0px 0px 0px;
     padding: 10px 15px;
   }
